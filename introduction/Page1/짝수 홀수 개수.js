@@ -14,8 +14,8 @@ function solution1(num_list) {
 function solution2(num_list) {
     return num_list.reduce(
         ([evenCount, oddCount], value) =>
-            value % 2 === 0 
-                ? [evenCount + 1, oddCount] 
+            value % 2 === 0
+                ? [evenCount + 1, oddCount]
                 : [evenCount, oddCount + 1],
         [0, 0]
     );
