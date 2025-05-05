@@ -119,3 +119,33 @@ def dfs_stack(graph, start):
             stack.extend(reversed(graph[v]))  # 연결된 노드를 뒤집어서 스택에 추가
 ```
 
+<br>
+
+## BFS (Breadth-First Search)
+
+- **너비 우선 탐색**
+- 가까운 노드부터 차례대로 탐색하는 방법
+- 최단 경로 탐색 등에서 자주 사용
+
+### 구현 방법
+
+1. **큐(Queue)** 자료구조 사용
+    - `collections.deque`를 사용하면 `pop(0)`보다 훨씬 빠름
+2. 노드를 방문한 순서대로 큐에 넣고, 하나씩 꺼내면서 인접한 노드들을 다시 큐에 추가
+
+```python
+from collections import deque
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    visited.add(start)
+
+    while queue:
+        v = queue.popleft()
+        print(v, end=' ')
+        for next_v in graph.get(v, []):
+            if next_v not in visited:
+                visited.add(next_v)
+                queue.append(next_v)
+```
